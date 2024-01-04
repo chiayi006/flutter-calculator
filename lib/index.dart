@@ -1,4 +1,4 @@
-import 'package:calculator/cal.dart';
+import 'package:calculator/calculate.dart';
 import 'package:flutter/material.dart';
 
 class IndexPage extends StatefulWidget {
@@ -36,7 +36,7 @@ class IndexPage extends StatefulWidget {
 class _IndexPageState extends State<IndexPage> {
   String _num = '';
 
-  Cal _cal = new Cal();
+  Calculate _cal = new Calculate();
 
   void clickKey(String key){
     // if ('C'.compareTo(key)==0){

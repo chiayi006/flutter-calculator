@@ -5,9 +5,9 @@ class IndexPage extends StatefulWidget {
   const IndexPage({super.key});
 
   static const Color PAGE_COLOR = Colors.black;
-  static const Color NUM_BTN_BG = Color(0xff323232);
-  static const Color TOP_BTN_BG = Color(0xFFa6a6a6);
-  static const Color RIGHT_BTN_BG = Color(0xFFff9500);
+  static const Color NUM_BTN_BG = Color(0xFF303030);
+  static const Color TOP_BTN_BG = Color(0xFFD6D6D6);
+  static const Color RIGHT_BTN_BG = Colors.orange;
 
   static const List<String> NKeys = [
     'C', 'D', '?', '/', //
@@ -38,14 +38,7 @@ class _IndexPageState extends State<IndexPage> {
 
   Calculate _cal = new Calculate();
 
-  void clickKey(String key){
-    // if ('C'.compareTo(key)==0){
-    //   _num='';
-    //   key='';
-    // }
-    // setState(() {
-    //   _num+=key;
-    // });
+  void clickKey(String key) {
     _cal.addKey(key);
     setState(() {
       _num = _cal.output;
@@ -59,7 +52,7 @@ class _IndexPageState extends State<IndexPage> {
       appBar: AppBar(
         title: Text(
           'Calculator',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white,fontSize: 32),
         ),
         backgroundColor: IndexPage.PAGE_COLOR,
         centerTitle: true,
@@ -81,7 +74,7 @@ class _IndexPageState extends State<IndexPage> {
                       '$_num',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 40,
+                        fontSize: 48,
                       ),
                     ),
                   ),
@@ -113,13 +106,17 @@ class _IndexPageState extends State<IndexPage> {
                     : IndexPage.NUM_BTN_BG,
             shape: flex > 1 ? BoxShape.rectangle : BoxShape.circle,
             borderRadius:
-                flex > 1 ? BorderRadius.all(Radius.circular(1000)) : null,
+                flex > 1 ? BorderRadius.all(Radius.circular(50)) : null,
           ),
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(15),
           child: Center(
             child: Text(
               '$num',
-              style: TextStyle(fontSize: 32, color: Colors.white),
+              style: TextStyle(
+                  fontSize: 32,
+                  color: IndexPage.TKeys.contains(num)
+                      ? Colors.black
+                      : Colors.white),
             ),
           ),
         ),

@@ -10,7 +10,7 @@ class IndexPage extends StatefulWidget {
   static const Color RIGHT_BTN_BG = Colors.orange;
 
   static const List<String> NKeys = [
-    'C', 'D', '?', '/', //
+    'C', 'AC', '?', '/', //
     '9', '8', '7', '*', //
     '6', '5', '4', '-', //
     '3', '2', '1', '+', //
@@ -18,7 +18,7 @@ class IndexPage extends StatefulWidget {
   ];
   static const List<String> TKeys = [
     'C',
-    'D',
+    'AC',
     '?',
   ];
   static const List<String> RKeys = [
@@ -131,6 +131,8 @@ class _IndexPageState extends State<IndexPage> {
 
     for (int i = 0; i < IndexPage.NKeys.length; i++) {
       String key = IndexPage.NKeys[i];
+
+      
       if (key.isEmpty) {
         flex++;
         continue;

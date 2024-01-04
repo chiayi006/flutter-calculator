@@ -25,7 +25,7 @@ class Calculate {
 
   static const List<String> TKeys = [
     'C',
-    'D',
+    'AC',
     '?',
   ];
 
@@ -51,8 +51,9 @@ class Calculate {
           _curnum = '';
           _output = '';
           _keys = [];
-        case 'D':
+        case 'AC':
           removeLastKey();
+        
           return;
       }
     }

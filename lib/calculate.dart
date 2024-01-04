@@ -51,12 +51,14 @@ class Calculate {
           _curnum = '';
           _output = '';
           _keys = [];
+          break;
         case 'AC':
           removeLastKey();
-        
-          return;
+          break;
       }
+      return;
     }
+
     String prekey = '';
     if (_keys.length > 0) {
       prekey = _keys[_keys.length - 1];
@@ -148,39 +150,36 @@ class Calculate {
   }
 
   void removeLastKey() {
-    String prekey = '';
-    if (_keys.length > 0) {
-      prekey = _keys[_keys.length - 1];
+    if (_keys.isEmpty) {
+      return;
     }
+
+    String prekey = _keys.removeLast();
+
     if (RKeys.contains(prekey)) {
-      String k1 = _s1[_s1.length - 1];
-      if (RKeys.contains(k1)) {
-        _s2.removeLast();
-        for (int i = _s1.length - 1; i >= 0; i--) {
-          String tk = _s1[i];
-          if (RKeys.contains(tk)) {
-            _s2.add(_s1.removeLast());
-          } else {
-            break;
-          }
-        }
-      } else {
-        _s2.removeLast();
-      }
-      _output = _output.substring(0, _output.length - 1);
-      _keys.removeLast();
-    } else if (_s1.length > 0 || _s1.isNotEmpty) {
-      if (_curnum.isNotEmpty) {
-        _curnum = _curnum.substring(0, _curnum.length - 1);
-      } else {
+      // Handle operators
+      while (_s1.isNotEmpty) {
         String tk = _s1.removeLast();
-        tk = tk.substring(0, tk.length - 1);
-        if (tk.isNotEmpty) {
-          _s1.add(tk);
+        if (RKeys.contains(tk)) {
+          _s2.add(tk);
+        } else {
+          break;
         }
       }
-      _output = _output.substring(0, _output.length - 1);
-      _keys.removeLast();
+      _s2.removeLast();
+    } else if (_curnum.isNotEmpty) {
+      // Handle numbers
+      _curnum = _curnum.substring(0, _curnum.length - 1);
+    } else if (_s1.isNotEmpty) {
+      // Handle the case when there are items in _s1
+      String tk = _s1.removeLast();
+      tk = tk.substring(0, tk.length - 1);
+      if (tk.isNotEmpty) {
+        _s1.add(tk);
+      }
     }
+
+    // Update _output
+    _output = _output.substring(0, _output.length - 1);
   }
 }

@@ -2,5 +2,6 @@
 
 It's a basic calculator.
 
-![image01](image01.png), ![image02](image02.png)
+<img src="image01.png" alt="image01" width="100" height="200"> <img src="image02.png" alt="image02" width="100" height="200">
+
 
